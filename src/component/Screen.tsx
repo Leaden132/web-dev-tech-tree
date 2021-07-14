@@ -1,64 +1,76 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 
 
 
 const Screen = () => {
     
-    const [mouseDown, setMouseDown] = useState();
+    const Box1 = useRef();
+    // const ele = useRef();
 
-    const ele = document.getElementById('screen');
+// The current position of mouse
+let x = 0;
+let y = 0;
+
+// Query the element
+const ele:any = document.getElementById('content');
+
+// Handle the mousedown event
+// that's triggered when user drags the element
+
+const mouseDownHandler = function(e:any) {
+    // Get the current mouse position
+    x = e.clientX;
+    y = e.clientY;
     
-    if (ele){
-    ele.scrollTop = 100;
-    ele.scrollLeft = 150;
-    }
+    // Attach the listeners to `document`
+    document.addEventListener('mousemove', mouseMoveHandler);
+    document.addEventListener('mouseup', mouseUpHandler);
+};
 
-    let pos = {
-        top:0,
-        left:0,
-        x:0,
-        y:0
-    }
+const mouseMoveHandler = function(e:any) {
+    // How far the mouse has been moved
+    const dx = e.clientX - x;
+    const dy = e.clientY - y;
 
-    const mouseMoveHandler = function(e:any) {
-        // How far the mouse has been moved
-        const dx = e.clientX - pos.x;
-        const dy = e.clientY - pos.y;
+    // Set the position of element
+    console.log(ele.offsetTop + dy);
+    console.log(ele.offsetLeft + dx);
 
-        if (ele) {
-    
-        // Scroll the element
-        ele.scrollTop = pos.top - dy;
-        ele.scrollLeft = pos.left - dx;
-        }
-    };
-
-    const mouseUpHandler = function() {
-        if (ele) {
-        ele.style.cursor = 'grab';
-        ele.style.removeProperty('user-select');
-        }
-    };
-
-    const mouseDownHandler = function(e:any) {
+    if(ele.offsetTop + dy > 500 || ele.offsetTop + dy < -1900) {
+        ele.style.top=`${ele.offsetTop}px`;
         
-        if (ele) {
-        pos = {
-            left: ele?.scrollLeft,
-            top: ele?.scrollTop,
-            x: e.clientX,
-            y: e.clientY
-        }
-
-        ele.style.cursor = 'grabbing';
-        ele.style.userSelect = 'none';
-
-        document.addEventListener('mousemove', mouseMoveHandler);
-        document.addEventListener('mouseup', mouseUpHandler);
-
-
+        
     }
+    else {
+        ele.style.top = `${ele.offsetTop + dy}px`; 
     }
+
+    if(ele.offsetLeft + dx > 1550 || ele.offsetLeft + dx < -1900) {
+        ele.style.left = `${ele.offsetLeft}px`
+        
+    }
+
+    else {
+        ele.style.left = `${ele.offsetLeft + dx}px`;
+    }
+    
+
+    // Reassign the position of mouse
+    x = e.clientX;
+    y = e.clientY;
+};
+
+const mouseUpHandler = function() {
+    // Remove the handlers of `mousemove` and `mouseup`
+
+    // ele.style.left = `${ele.offsetLeft + dx}px`
+    // ele.style.top = `${ele.offsetTop + dy}px`; 
+
+    document.removeEventListener('mousemove', mouseMoveHandler);
+    document.removeEventListener('mouseup', mouseUpHandler);
+};
+
+ele.addEventListener('mousedown', mouseDownHandler);
 
     console.log(ele);
 
@@ -71,14 +83,12 @@ const Screen = () => {
     return (
         <div className="screen" id="screen">
             <div className="content" id="content">
+            <div id="dragme" className="draggable">
+                
+            <div ref={Box1.current} className="nodeBox">ok</div>
 
 
-            <p></p>
-
-
-
-
-
+            </div>
             </div>
         </div>
     )

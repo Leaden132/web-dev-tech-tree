@@ -36,3 +36,42 @@ h1 {
       }
   }
   
+  html {
+    background-color:black;
+}
+    .screen {
+width: 90vw;
+height:90vh;
+background-color:white;
+margin:auto;
+margin-top:50px;
+overflow:hidden;
+position:relative;
+}
+.content {
+    width:2000px;
+    height:2000px;
+    position:absolute;
+    background-color:grey;
+}
+.dragme{
+  color:black;
+}
+
+.draggable {
+
+/* Indicate the element draggable */
+cursor: move;
+
+/* It will be positioned absolutely */
+position: absolute;
+
+/* Doesn't allow to select the content inside */
+user-select: none;
+
+}
+
+
+// .nodeBox {
+//     background-color:green;
+// }
