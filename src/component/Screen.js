@@ -1,24 +1,39 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import NodeBox from "./NodeBox";
 import {useScreen} from '../context/ScreenContext';
+import nodeData from '../nodedata/nodeData'
 
 const Screen = () => {
 
-  const ele = useRef();
+  const screen = useRef();
   const [mouseDown, setMouseDown] = useState(false);
   const [nodeOneMouseDown, setNodeOneMouseDown] = useState(false);
-  const [horizontalDistance, setHorizontalDistance] = useState(0);
-  const [verticalDistance, setVerticalDistance] = useState(0);
+  // const [horizontalDistance, setHorizontalDistance] = useState(0);
+  // const [verticalDistance, setVerticalDistance] = useState(0);
+  const horizontalDistance = useRef(0);
+  const verticalDistance = useRef(0);
 
   const {onTopNode} = useScreen();
+
+
+  const data = nodeData
+
+  const nodeArray = [];
+
+  data.map((node)=>{
+
+    nodeArray.push(<NodeBox id={node.id} label={node.label} parent={node.parent}/>)
+  })
+
+  console.log(data);
 
 
   const mouseDownHandler = function (e) {
     // Get the current mouse position
     console.log(e);
     console.log("scene mouse down");
-    setHorizontalDistance(e.clientX);
-    setVerticalDistance(e.clientY);
+    horizontalDistance.current = e.clientX;
+    verticalDistance.current = e.clientY;
 
     if(!onTopNode){
     setMouseDown(true);
@@ -27,12 +42,12 @@ const Screen = () => {
 
   const mouseMoveHandler = (e) => {
     if (mouseDown) {
-      const dx = e.clientX - horizontalDistance;
-      const dy = e.clientY - verticalDistance;
+      const dx = e.clientX - horizontalDistance.current;
+      const dy = e.clientY - verticalDistance.current;
 
 
       e.target.style.top = `${e.target.offsetTop + dy}px`; 
-          e.target.style.left = `${e.target.offsetLeft + dx}px`;
+      e.target.style.left = `${e.target.offsetLeft + dx}px`;
 
       // if (e.target.offsetTop + dy > 500 || e.target.offsetTop + dy < -1900) {
       //   e.target.style.top = `${e.target.offsetTop}px`;
@@ -46,8 +61,8 @@ const Screen = () => {
       //   e.target.style.left = `${e.target.offsetLeft + dx}px`;
       // }
 
-      setHorizontalDistance(e.clientX);
-      setVerticalDistance(e.clientY);
+      horizontalDistance.current = e.clientX;
+      verticalDistance.current = e.clientY;
     }
   };
 
@@ -61,14 +76,16 @@ const Screen = () => {
       <div
         className="content"
         id="content"
-        ref={ele}
+        ref={screen}
         onMouseDown={mouseDownHandler}
         onMouseUp={mouseUpHandler}
         onMouseMove={mouseMoveHandler}
         onMouseLeave={()=>setMouseDown(false)}
       >
         <div id="dragme" className="draggable">
-         <NodeBox/>
+         {/* <NodeBox /> */}
+          {nodeArray}
+
         </div>
       </div>
     </div>

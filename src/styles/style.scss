@@ -59,5 +59,32 @@ user-select: none;
     position:absolute;
     width:200px;
     height:100px;
-    
+    border: 3px solid white;
+    border-radius: 10px;
+    text-align:center;
 }
+
+
+.magenta {
+    color: rgb(241, 3, 200);
+    border-color: rgb(241, 3, 200);
+    background-color: rgb(251, 175, 238);
+  }
+  
+  .violet {
+    color: rgb(134, 3, 241);
+    border-color: rgb(134, 3, 241);
+    background-color: rgb(215, 166, 254);
+  }
+  
+  .blue {
+    color: rgb(0, 100, 210);
+    border-color: rgb(0, 100, 210);
+    background-color: rgb(176, 213, 254);
+  }
+  
+  .turquoise {
+    color: rgb(3, 211, 207);
+    border-color: rgb(3, 211, 207);
+    background-color: rgb(190, 254, 253);
+  }

@@ -1,21 +1,29 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import {useScreen} from '../context/ScreenContext';
+import nodeData from '../nodedata/nodeData'
 
 const NodeBox = () => {
     const Box1 = useRef();
 
-    const [horizontalDistance, setHorizontalDistance] = useState(0);
-    const [verticalDistance, setVerticalDistance] = useState(0);
+    const data = nodeData
+
+    // console.log(data);
+
+    // const [horizontalDistance, setHorizontalDistance] = useState(0);
+    // const [verticalDistance, setVerticalDistance] = useState(0);
     const [mouseDown, setMouseDown] = useState(false);
     const {OnTopNodeSetter} = useScreen();
+    const horizontalDistance = useRef(0);
+    const verticalDistance = useRef(0);
+
 
     const mouseDownHandler = function (e) {
         // Get the current mouse position
         console.log(e);
         console.log("node mouse down");
-        setHorizontalDistance(e.clientX);
-        setVerticalDistance(e.clientY);
+        horizontalDistance.current = e.clientX;
+        verticalDistance.current = e.clientY;
         setMouseDown(true);
       };
     
@@ -25,12 +33,12 @@ const NodeBox = () => {
         const container = document.getElementById('content')?document.getElementById('content'):null;
         
 
-        console.log(container);
+        // console.log(container);
 
 
         if (mouseDown) {
-          const dx = e.clientX - horizontalDistance;
-          const dy = e.clientY - verticalDistance;
+          const dx = e.clientX - horizontalDistance.current;
+          const dy = e.clientY - verticalDistance.current;
 
           e.target.style.top = `${e.target.offsetTop + dy}px`; 
           e.target.style.left = `${e.target.offsetLeft + dx}px`;
@@ -47,8 +55,8 @@ const NodeBox = () => {
           //   e.target.style.left = `${e.target.offsetLeft + dx}px`;
           // }
     
-          setHorizontalDistance(e.clientX);
-          setVerticalDistance(e.clientY);
+          horizontalDistance.current = e.clientX;
+          verticalDistance.current = e.clientY;
         }
       };
     
@@ -57,18 +65,26 @@ const NodeBox = () => {
         setMouseDown(false);
       };
 
+      const mouseLeaveHandler = () => {
+        OnTopNodeSetter(false);
+        
+        
+        setMouseDown(false);
+      }
+
 
     return (
-        <div ref={Box1.current} className="nodeBox"         
+        <div ref={Box1.current} className="nodeBox violet" 
+        // draggable='true'
         onMouseDown={mouseDownHandler}
         onMouseUp={mouseUpHandler}
         onMouseMove={mouseMoveHandler}
         onMouseEnter={()=>OnTopNodeSetter(true)}
-        onMouseLeave={()=>{OnTopNodeSetter(false);
-          setMouseDown(false);}}
+        onMouseLeave={()=>{mouseLeaveHandler()}}
         >
             Node 1!
           </div>
+          
     )
 }
 

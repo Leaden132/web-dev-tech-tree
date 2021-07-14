@@ -1,0 +1,103 @@
+[
+    {
+      "id": 1,
+      "label": "Web Development",
+      "parent": 0
+    },
+    {
+      "id": 2,
+      "label": "Preparation",
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Basic Languages",
+      "parent": 2
+    },
+    {
+      "id": 4,
+      "label": "specialization",
+      "parent": 3
+    },
+    {
+      "id": 5,
+      "label": "Front-End",
+      "parent": 4
+    },
+    {
+      "id": 6,
+      "label": "Back-End",
+      "parent": 4
+    },
+    {
+      "id": 7,
+      "label": "Auxiliary Expansion",
+      "parent": 4
+    },
+    {
+      "id": 8,
+      "label": "Basic Knowledge",
+      "parent": 2
+    },
+    {
+      "id": 9,
+      "label": "Basic Knowledge children",
+      "parent": 8
+    },
+    {
+      "id": 10,
+      "label": "React",
+      "parent": 4
+    },
+    {
+      "id": 11,
+      "label": "Reason",
+      "parent": 6
+    },
+    {
+      "id": 12,
+      "label": "Ableton Live",
+      "parent": 6
+    },
+    {
+      "id": 13,
+      "label": "Three.js",
+      "parent": 9
+    },
+    {
+      "id": 14,
+      "label": "Phaser",
+      "parent": 9
+    },
+    {
+      "id": 15,
+      "label": "Singing",
+      "parent": 1
+    },
+    {
+      "id": 16,
+      "label": "Dancing",
+      "parent": 1
+    },
+    {
+      "id": 17,
+      "label": "Laughing",
+      "parent": 1
+    },
+    {
+      "id": 18,
+      "label": "Dogs",
+      "parent": 0
+    },
+    {
+      "id": 19,
+      "label": "Cats",
+      "parent": 0
+    },
+    {
+      "id": 19,
+      "label": "Mice",
+      "parent": 1
+    }
+  ]
+  
