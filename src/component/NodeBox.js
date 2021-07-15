@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import {useScreen} from '../context/ScreenContext';
 import nodeData from '../nodedata/nodeData'
 
-const NodeBox = () => {
+const NodeBox = ({id, label, parent}) => {
     const Box1 = useRef();
 
     const data = nodeData
@@ -24,6 +24,9 @@ const NodeBox = () => {
         console.log("node mouse down");
         horizontalDistance.current = e.clientX;
         verticalDistance.current = e.clientY;
+        e.target.style.zIndex = "100";
+        // e.target.parentElement.style.zIndex = "100";
+
         setMouseDown(true);
       };
     
@@ -60,8 +63,9 @@ const NodeBox = () => {
         }
       };
     
-      const mouseUpHandler = () => {
+      const mouseUpHandler = (e) => {
         console.log("mouse up");
+        e.target.style.zIndex = "6";
         setMouseDown(false);
       };
 
@@ -80,9 +84,9 @@ const NodeBox = () => {
         onMouseUp={mouseUpHandler}
         onMouseMove={mouseMoveHandler}
         onMouseEnter={()=>OnTopNodeSetter(true)}
-        onMouseLeave={()=>{mouseLeaveHandler()}}
+        onMouseLeave={mouseLeaveHandler}
         >
-            Node 1!
+            <p>{label}</p>
           </div>
           
     )

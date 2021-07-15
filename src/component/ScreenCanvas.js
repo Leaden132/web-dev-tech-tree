@@ -1,9 +1,13 @@
-import { useState, useRef } from "react";
+
+//Still testing possibilities
+
+
+import { useState, useRef, useEffect } from "react";
 import NodeBox from "./NodeBox";
 import {useScreen} from '../context/ScreenContext';
 import nodeData from '../nodedata/nodeData'
 
-const Screen = () => {
+const ScreenCanvas = () => {
 
   const screen = useRef();
   const [mouseDown, setMouseDown] = useState(false);
@@ -12,6 +16,7 @@ const Screen = () => {
   // const [verticalDistance, setVerticalDistance] = useState(0);
   const horizontalDistance = useRef(0);
   const verticalDistance = useRef(0);
+  const canvasRef = useRef(null)
 
   const {onTopNode} = useScreen();
 
@@ -26,6 +31,15 @@ const Screen = () => {
   })
 
   console.log(data);
+
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    const context = canvas.getContext('2d')
+    //Our first draw
+    context.fillStyle = 'grey'
+    context.fillRect(0, 0, context.canvas.width, context.canvas.height)
+  }, [])
 
 
   const mouseDownHandler = function (e) {
@@ -64,7 +78,7 @@ const Screen = () => {
       horizontalDistance.current = e.clientX;
       verticalDistance.current = e.clientY;
     }
-  }
+  };
 
   const mouseUpHandler = () => {
     console.log("mouse up");
@@ -73,23 +87,23 @@ const Screen = () => {
 
   return (
     <div className="screen" id="screen">
-      <div
-        className="content"
-        id="content"
-        ref={screen}
-        onMouseDown={mouseDownHandler}
-        onMouseUp={mouseUpHandler}
-        onMouseMove={mouseMoveHandler}
-        onMouseLeave={()=>setMouseDown(false)}
+      
+      <canvas ref={canvasRef}
+      className="content"
+      id="content"
+      onMouseDown={mouseDownHandler}
+      onMouseUp={mouseUpHandler}
+      onMouseMove={mouseMoveHandler}
+      onMouseLeave={()=>setMouseDown(false)}
       >
         <div id="dragme" className="draggable">
          {/* <NodeBox /> */}
           {nodeArray}
 
         </div>
-      </div>
+        </canvas>
     </div>
   );
 };
 
-export default Screen;
+export default ScreenCanvas;
