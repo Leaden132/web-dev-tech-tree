@@ -7,7 +7,7 @@ const Screen = () => {
 
   const screen = useRef();
   const [mouseDown, setMouseDown] = useState(false);
-  const [nodeOneMouseDown, setNodeOneMouseDown] = useState(false);
+  // const [nodeOneMouseDown, setNodeOneMouseDown] = useState(false);
   // const [horizontalDistance, setHorizontalDistance] = useState(0);
   // const [verticalDistance, setVerticalDistance] = useState(0);
   const horizontalDistance = useRef(0);
@@ -28,7 +28,7 @@ const Screen = () => {
   console.log(data);
 
 
-  const mouseDownHandler = function (e) {
+  const handleMouseDown = (e) => {
     // Get the current mouse position
     console.log(e);
     console.log("scene mouse down");
@@ -40,7 +40,7 @@ const Screen = () => {
 }
   };
 
-  const mouseMoveHandler = (e) => {
+  const handleMouseMove = (e) => {
     if (mouseDown) {
       const dx = e.clientX - horizontalDistance.current;
       const dy = e.clientY - verticalDistance.current;
@@ -66,7 +66,7 @@ const Screen = () => {
     }
   }
 
-  const mouseUpHandler = () => {
+  const handleMouseUp = () => {
     console.log("mouse up");
     setMouseDown(false);
   };
@@ -77,9 +77,9 @@ const Screen = () => {
         className="content"
         id="content"
         ref={screen}
-        onMouseDown={mouseDownHandler}
-        onMouseUp={mouseUpHandler}
-        onMouseMove={mouseMoveHandler}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseMove={handleMouseMove}
         onMouseLeave={()=>setMouseDown(false)}
       >
         <div id="dragme" className="draggable">
