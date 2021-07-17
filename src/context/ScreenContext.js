@@ -11,7 +11,7 @@ export function ScreenProvider({children}) {
     const [onTopNode, setOnTopNode] = useState(false);
 
 
-    function OnTopNodeSetter(onNode) {
+    function onTopNodeSetter(onNode) {
         return setOnTopNode(onNode);
     }
 
@@ -19,7 +19,7 @@ export function ScreenProvider({children}) {
 
     const value = {
         onTopNode,
-        OnTopNodeSetter
+        onTopNodeSetter
     }
 
     return (

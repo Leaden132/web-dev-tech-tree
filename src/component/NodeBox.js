@@ -2,16 +2,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import {useScreen} from '../context/ScreenContext';
 import nodeData from '../nodedata/nodeData'
-import {useMousePosition} from '../hooks/usePosition'
+// import {useMousePosition} from '../hooks/usePosition'
 
 const NodeBox = ({id, content, parent, handleNodeMovement, buildNodePositionData, left, top}) => {
     const Box = useRef();
     const data = nodeData
     const [mouseDown, setMouseDown] = useState(false);
-    const {OnTopNodeSetter} = useScreen();
+    const {onTopNodeSetter} = useScreen();
     const horizontalDistance = useRef(0);
     const verticalDistance = useRef(0);
-    const position = useMousePosition();
+    // const position = useMousePosition();
 
    
 
@@ -104,6 +104,7 @@ useEffect(()=>{
           verticalDistance.current = e.clientY;
 
           handleNodeMovement(id, horizontalDistance.current, verticalDistance.current, parent)
+
         }
       };
     
@@ -114,7 +115,7 @@ useEffect(()=>{
       };
 
       const handleMouseLeave = () => {
-        OnTopNodeSetter(false);
+        onTopNodeSetter(false);
           setMouseDown(false);
         
       }
@@ -127,13 +128,13 @@ useEffect(()=>{
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseMove={handleMouseMove}
-        onMouseEnter={()=>OnTopNodeSetter(true)}
+        onMouseEnter={()=>onTopNodeSetter(true)}
         onMouseLeave={handleMouseLeave}
         >
-            {content.map((content)=>{
-              return <p>{content}</p>
+            {content.map((content, index)=>{
+              return <p key={`content-${index}`}>{content}</p>
             })}
-            <p>{position.x}:{position.y}</p>
+            {/* <p>{position.x}:{position.y}</p> */}
           </div>
           
     )

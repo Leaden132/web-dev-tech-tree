@@ -3,107 +3,141 @@
       "id": 1,
       "content": ["Web Development"],
       "parent": 0,
-      "top":100,
-      "left":200
+      "top":50,
+      "left":1700
     },
     {
       "id": 2,
       "content": ["Preparation"],
       "parent": 1,
-      "top":150,
-      "left":250
+      "top":250,
+      "left":1700
     },
     {
       "id": 3,
-      "content": ["Basic Languages"],
+      "content": ["Fundamental Languages"],
       "parent": 2,
-      "top":200,
-      "left":300
+      "top":450,
+      "left":1700
     },
     {
       "id": 4,
       "content": ["specialization"],
-      "parent": 3
+      "parent": 3,
+      "top":650,
+      "left":1700
     },
     {
       "id": 5,
       "content": ["Front-End"],
-      "parent": 4
+      "parent": 4,
+      "top":850,
+      "left":1200
     },
     {
       "id": 6,
       "content": ["Back-End"],
-      "parent": 4
+      "parent": 4,
+      "top":850,
+      "left":1600
     },
     {
       "id": 7,
       "content": ["Auxiliary Expansion"],
-      "parent": 4
+      "parent": 4,
+      "top":850,
+      "left":2200
     },
     {
       "id": 8,
       "content": ["Fundamental Knowledge"],
-      "parent": 2
+      "parent": 2,
+      "top":150,
+      "left":1250
     },
     {
       "id": 9,
       "content": ["Hosting / Domain / DNS / HTTP"],
-      "parent": 8
+      "parent": 8,
+      "top":150,
+      "left":850
     },
     {
       "id": 10,
       "content": ["Dev Environment"],
-      "parent": 2
+      "parent": 2,
+      "top":300,
+      "left":1250
     },
     {
       "id": 11,
       "content": ["OS - Mac, Window", "Text Editor - VS Code", "browser: Chrome, Firefox", "Terminal - Git Bash, Zsh, CMDER", "Design - Adobe XD, Figma"],
-      "parent": 10
+      "parent": 10,
+      "top":300,
+      "left":650
     },
     {
       "id": 12,
       "content": ["HTML"],
-      "parent": 3
+      "parent": 3,
+      "top":350,
+      "left":2200
     },
     {
       "id": 13,
       "content": ["CSS"],
-      "parent": 3
+      "parent": 3,
+      "top":500,
+      "left":2200
     },
     {
       "id": 14,
       "content": ["JavaScript"],
-      "parent": 3
+      "parent": 3,
+      "top":650,
+      "left":2200
     },
     {
       "id": 15,
       "content": ["Semantics", "Page Structure", "Grammar"],
-      "parent": 12
+      "parent": 12,
+      "top":200,
+      "left":2500
     },
     {
       "id": 16,
       "content": ["Basic styling", "positions", "Flexbox"],
-      "parent": 13
+      "parent": 13,
+      "top":500,
+      "left":2500
     },
     {
       "id": 17,
       "content": ["Variables", "data type", "object", "array", "Function", "Loops", "DOM"],
-      "parent": 14
+      "parent": 14,
+      "top":700,
+      "left":2500
     },
     {
       "id": 18,
       "content": ["HTML"],
-      "parent": 4
+      "parent": 4,
+      "top":200,
+      "left":300
     },
     {
       "id": 19,
       "content": ["JavaScript"],
-      "parent": 4
+      "parent": 4,
+      "top":200,
+      "left":300
     },
     {
       "id": 19,
       "content": ["CSS"],
-      "parent": 4
+      "parent": 4,
+      "top":200,
+      "left":300
     }
   ]
   

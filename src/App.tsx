@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <header>
-      <h1>modern web development technology tree</h1>
+      <h1>Modern Web Development Mind Map</h1>
       </header>
      <Screen/>
     </div>
