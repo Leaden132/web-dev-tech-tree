@@ -1,103 +1,109 @@
 [
     {
       "id": 1,
-      "label": "Web Development",
-      "parent": 0
+      "content": ["Web Development"],
+      "parent": 0,
+      "top":100,
+      "left":200
     },
     {
       "id": 2,
-      "label": "Preparation",
-      "parent": 1
+      "content": ["Preparation"],
+      "parent": 1,
+      "top":150,
+      "left":250
     },
     {
       "id": 3,
-      "label": "Basic Languages",
-      "parent": 2
+      "content": ["Basic Languages"],
+      "parent": 2,
+      "top":200,
+      "left":300
     },
     {
       "id": 4,
-      "label": "specialization",
+      "content": ["specialization"],
       "parent": 3
     },
     {
       "id": 5,
-      "label": "Front-End",
+      "content": ["Front-End"],
       "parent": 4
     },
     {
       "id": 6,
-      "label": "Back-End",
+      "content": ["Back-End"],
       "parent": 4
     },
     {
       "id": 7,
-      "label": "Auxiliary Expansion",
+      "content": ["Auxiliary Expansion"],
       "parent": 4
     },
     {
       "id": 8,
-      "label": "Basic Knowledge",
+      "content": ["Fundamental Knowledge"],
       "parent": 2
     },
     {
       "id": 9,
-      "label": "Basic Knowledge children",
+      "content": ["Hosting / Domain / DNS / HTTP"],
       "parent": 8
     },
     {
       "id": 10,
-      "label": "React",
-      "parent": 4
+      "content": ["Dev Environment"],
+      "parent": 2
     },
     {
       "id": 11,
-      "label": "Reason",
-      "parent": 6
+      "content": ["OS - Mac, Window", "Text Editor - VS Code", "browser: Chrome, Firefox", "Terminal - Git Bash, Zsh, CMDER", "Design - Adobe XD, Figma"],
+      "parent": 10
     },
     {
       "id": 12,
-      "label": "Ableton Live",
-      "parent": 6
+      "content": ["HTML"],
+      "parent": 3
     },
     {
       "id": 13,
-      "label": "Three.js",
-      "parent": 9
+      "content": ["CSS"],
+      "parent": 3
     },
     {
       "id": 14,
-      "label": "Phaser",
-      "parent": 9
+      "content": ["JavaScript"],
+      "parent": 3
     },
     {
       "id": 15,
-      "label": "Singing",
-      "parent": 1
+      "content": ["Semantics", "Page Structure", "Grammar"],
+      "parent": 12
     },
     {
       "id": 16,
-      "label": "Dancing",
-      "parent": 1
+      "content": ["Basic styling", "positions", "Flexbox"],
+      "parent": 13
     },
     {
       "id": 17,
-      "label": "Laughing",
-      "parent": 1
+      "content": ["Variables", "data type", "object", "array", "Function", "Loops", "DOM"],
+      "parent": 14
     },
     {
       "id": 18,
-      "label": "Dogs",
-      "parent": 0
+      "content": ["HTML"],
+      "parent": 4
     },
     {
       "id": 19,
-      "label": "Cats",
-      "parent": 0
+      "content": ["JavaScript"],
+      "parent": 4
     },
     {
       "id": 19,
-      "label": "Mice",
-      "parent": 1
+      "content": ["CSS"],
+      "parent": 4
     }
   ]
   

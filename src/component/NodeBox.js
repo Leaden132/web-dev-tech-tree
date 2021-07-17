@@ -4,8 +4,8 @@ import {useScreen} from '../context/ScreenContext';
 import nodeData from '../nodedata/nodeData'
 import {useMousePosition} from '../hooks/usePosition'
 
-const NodeBox = ({id, label, parent}) => {
-    const Box1 = useRef();
+const NodeBox = ({id, content, parent, handleNodeMovement, buildNodePositionData, left, top}) => {
+    const Box = useRef();
     const data = nodeData
     const [mouseDown, setMouseDown] = useState(false);
     const {OnTopNodeSetter} = useScreen();
@@ -13,24 +13,47 @@ const NodeBox = ({id, label, parent}) => {
     const verticalDistance = useRef(0);
     const position = useMousePosition();
 
+   
+
+    
+
+useEffect(()=>{
+  
+  Box.current.style.left = `${left}px`;
+  Box.current.style.top = `${top}px`;
+  const x = Box.current.style.left;
+  const y = Box.current.style.top;
+  const nodeWidth = Box.current.style.width;
+  const nodeheight = Box.current.style.height;
+  
+
+  buildNodePositionData(id, x,y, nodeWidth, nodeheight)
+
+},[])
+            
+
+        
+
+        
+      
+
+      
+
+
+      // buildNodePositionData(id,)
+
+
     // useEffect(()=>{
               
-
     //   const e = document.getElementById(`${id}`)
-
     //   if(mouseDown){
     //       const dx = e.clientX - horizontalDistance.current;
     //       const dy = e.clientY - verticalDistance.current;
-
     //       e.style.top = `${e.offsetTop + dy}px`; 
     //       e.style.left = `${e.offsetLeft + dx}px`;
-
     //       horizontalDistance.current = e.clientX;
     //       verticalDistance.current = e.clientY;
     //     }
-
-
-
     // },[position])
 
     const handleMouseDown = (e) => {
@@ -44,9 +67,6 @@ const NodeBox = ({id, label, parent}) => {
 
         setMouseDown(true);
 
-
-
-
         // if(mouseDown){
         //   const dx = e.clientX - horizontalDistance.current;
         //   const dy = e.clientY - verticalDistance.current;
@@ -57,13 +77,9 @@ const NodeBox = ({id, label, parent}) => {
         //   horizontalDistance.current = e.clientX;
         //   verticalDistance.current = e.clientY;
         // }
-
       };
     
       const handleMouseMove = (e) => {
-
-
-        // const container = document.getElementById('content')?document.getElementById('content'):null;
 
         if (mouseDown) {
           const dx = e.clientX - horizontalDistance.current;
@@ -86,6 +102,8 @@ const NodeBox = ({id, label, parent}) => {
     
           horizontalDistance.current = e.clientX;
           verticalDistance.current = e.clientY;
+
+          handleNodeMovement(id, horizontalDistance.current, verticalDistance.current, parent)
         }
       };
     
@@ -97,15 +115,13 @@ const NodeBox = ({id, label, parent}) => {
 
       const handleMouseLeave = () => {
         OnTopNodeSetter(false);
-        
           setMouseDown(false);
-
         
       }
 
 
     return (
-        <div ref={Box1.current} className="nodeBox violet"
+        <div ref={Box} className={`nodeBox violet`}
         id={id} 
         // draggable='true'
         onMouseDown={handleMouseDown}
@@ -114,7 +130,9 @@ const NodeBox = ({id, label, parent}) => {
         onMouseEnter={()=>OnTopNodeSetter(true)}
         onMouseLeave={handleMouseLeave}
         >
-            <p>{label}</p>
+            {content.map((content)=>{
+              return <p>{content}</p>
+            })}
             <p>{position.x}:{position.y}</p>
           </div>
           
