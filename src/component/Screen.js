@@ -57,8 +57,9 @@ height:300}
 
 
 
-  const buildNodePositionData = (id, x, y,width,height) => {
-    nodePositionData[id] = {x:x,y:y,width:width,height:height};
+  const buildNodePositionData = (id, x, y) => {
+    nodePositionData[id] = {...nodePositionData[id],x:x,y:y,};
+    console.log(nodePositionData[id])
   }
 
   const handleNodeMovement = (id , x , y, parent) => {
@@ -68,7 +69,7 @@ height:300}
     console.log(nodePositionData[id]);
     console.log(nodePositionData[parent]);
 
-    nodeConnectorArray[id] = (<NodeConnector nodePositionData = {nodePositionData[id]} parentNodePositionData = {nodePositionData[parent]} initialPositionData={initialPositionData[id]}/>)
+    // nodeConnectorArray[id] = (<NodeConnector nodePositionData = {nodePositionData[id]} parentNodePositionData = {nodePositionData[parent]} initialPositionData={initialPositionData[id]}/>)
 
     // console.log("moving!", id, x, y, parent)
 
@@ -76,34 +77,37 @@ height:300}
 
   }
 
+  const handlePositionChange = (id , x , y, parent) => {
+
+    console.log(id, x, y, parent);
+    console.log(nodePositionData[id]);
+    console.log(nodeConnectorArray[id-1]);
+
+    nodeConnectorArray[id-1] = (<NodeConnector nodePositionData = {nodePositionData[id]} parentNodePositionData = {nodePositionData[parent]} initialPositionData={initialPositionData[id]}/>)
+
+    console.log(nodeConnectorArray[id-1]);
+
+  }
+
+
     data.map((node, index)=>{
       nodeArray.push(<NodeBox key={`node-${index}`} id={node.id} content={node.content} parent={node.parent}
       top={node.top} left={node.left} handleNodeMovement={handleNodeMovement}
       initialPositionData={initialPositionData}
       buildNodePositionData={buildNodePositionData}
-      movingPosition={movingPosition}/>)
+      movingPosition={movingPosition}
+      handlePositionChange={handlePositionChange}/>)
     })
 
     for (let i = 1; i < 15;i++ ){
-        
       const {x, y, width, height} = nodePositionData[i]
-      
       nodeConnectorArray.push(<NodeConnector nodePositionData = {nodePositionData[i]} parentNodePositionData = {nodePositionData[nodePositionData[i].parent]} initialPositionData={initialPositionData[i]}/>)
-
     }
 
     console.log(nodePositionData[2])
-
-
     // useEffect(()=>{
-
-
     //   //Object.keys(nodePositionData).length
-
-
-
     //   console.log(nodeConnectorArray)
-
     // },[])
 
 
@@ -153,7 +157,7 @@ height:300}
           {nodeArray}
 
         </div>
-
+{/* <NodeConnector nodePositionData = {nodePositionData[2]} parentNodePositionData = {{x:100, y:100, width:100, height:100, parent:1}} initialPositionData={initialPositionData[2]} movingPositoin={movingPosition}/> */}
         {nodeConnectorArray}
       </div>
     </div>

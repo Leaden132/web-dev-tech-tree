@@ -4,7 +4,7 @@ import {useScreen} from '../context/ScreenContext';
 import nodeData from '../nodedata/nodeData'
 // import {useMousePosition} from '../hooks/usePosition'
 
-const NodeBox = ({id, content, parent, handleNodeMovement, buildNodePositionData, left, top}) => {
+const NodeBox = ({id, content, parent, handleNodeMovement, buildNodePositionData, left, top, handlePositionChange}) => {
     const Box = useRef();
     const data = nodeData
     const [mouseDown, setMouseDown] = useState(false);
@@ -103,7 +103,7 @@ useEffect(()=>{
           horizontalDistance.current = e.clientX;
           verticalDistance.current = e.clientY;
 
-          handleNodeMovement(id, horizontalDistance.current, verticalDistance.current, parent)
+          handleNodeMovement(id, parseInt(e.target.style.left), parseInt(e.target.style.top), parent)
 
         }
       };
@@ -112,6 +112,8 @@ useEffect(()=>{
         console.log("mouse up");
         e.target.style.zIndex = "6";
         setMouseDown(false);
+        console.log(parseInt(e.target.style.left))
+        handlePositionChange(id, parseInt(e.target.style.left), parseInt(e.target.style.top), parent)
       };
 
       const handleMouseLeave = () => {
