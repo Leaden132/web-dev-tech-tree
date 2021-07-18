@@ -99,7 +99,7 @@ height:300}
       handlePositionChange={handlePositionChange}/>)
     })
 
-    for (let i = 1; i < 15;i++ ){
+    for (let i = 1; i < 20;i++ ){
       const {x, y, width, height} = nodePositionData[i]
       nodeConnectorArray.push(<NodeConnector nodePositionData = {nodePositionData[i]} parentNodePositionData = {nodePositionData[nodePositionData[i].parent]} initialPositionData={initialPositionData[i]}/>)
     }

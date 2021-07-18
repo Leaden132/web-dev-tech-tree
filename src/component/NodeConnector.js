@@ -28,20 +28,21 @@ const NodeConnector = ({nodePositionData, parentNodePositionData, initialPositio
         const yParent = parentNodePositionData.y
         const widthParent = parentNodePositionData.width
         const heightParent = parentNodePositionData.height
+        let angleAdj = 1;
         
-
-        // // if (x > xParent && y > yParent && (x - xParent) > (y - yParent)) {
-        // //     //left
-        // // }
+// && y > yParent && (x - xParent) > (y - yParent)
+        if (x < xParent) {
+            //left
+            angleAdj = -1;
+        }
     
         const xDiff = Math.abs(x - xParent);
         const yDiff = Math.abs(y - yParent);
         const length = Math.sqrt((Math.pow(xDiff, 2) + Math.pow(yDiff, 2)))
         const theta = Math.atan((xDiff/yDiff))
         console.log(theta);
-        const angle = (theta * (180/Math.PI)) || 0;
+        const angle = (angleAdj * theta * (180/Math.PI)) || 0;
         //radians * (180/Math.PI);
-        console.log(xParent);
 
         console.log(xDiff);
         setLineHeight(Math.sqrt((Math.pow(xDiff, 2) + Math.pow(yDiff, 2))))
@@ -52,7 +53,7 @@ const NodeConnector = ({nodePositionData, parentNodePositionData, initialPositio
             width:'5px',
             height:`${length}px`,
             position:'absolute',
-            left:`${x}px`,
+            left:`${(x+100)}px`,
             top:`${y}px`,
             zIndex:'10',
             transform: `rotate(${angle}deg) translate(${0}px, ${-length}px)`,
@@ -84,15 +85,32 @@ const NodeConnector = ({nodePositionData, parentNodePositionData, initialPositio
         // // if (x > xParent && y > yParent && (x - xParent) > (y - yParent)) {
         // //     //left
         // // }
+
+        let angleAdj = 1;
+        let yAdj = 0;
+        let xAdj = 100;
+        if (x > xParent) {
+            //left
+            angleAdj = -1;
+        }
+
+        if (y > yParent) {
+            yAdj = 100
+        }
     
-        const xDiff = Math.abs(x - xParent);
-        const yDiff = Math.abs(y - yParent);
+        const xDiff = Math.abs(x - (xParent));
+        const yDiff = Math.abs(y - (yParent+yAdj));
         const length = Math.sqrt((Math.pow(xDiff, 2) + Math.pow(yDiff, 2)))
         const theta = Math.atan((xDiff/yDiff))
         console.log(theta);
-        const angle = (theta * (180/Math.PI)) || 0;
+
+
+
+        const angle = (angleAdj * theta * (180/Math.PI)) || 0;
         //radians * (180/Math.PI);
         console.log(xParent);
+
+
 
         console.log(xDiff);
         setLineHeight(Math.sqrt((Math.pow(xDiff, 2) + Math.pow(yDiff, 2))))
@@ -103,7 +121,7 @@ const NodeConnector = ({nodePositionData, parentNodePositionData, initialPositio
             width:'5px',
             height:`${length}px`,
             position:'absolute',
-            left:`${x}px`,
+            left:`${x+100}px`,
             top:`${y}px`,
             zIndex:'10',
             transform: `rotate(${angle}deg) translate(${0}px, ${-length}px)`,
@@ -142,7 +160,7 @@ const NodeConnector = ({nodePositionData, parentNodePositionData, initialPositio
         <div style={connectStyle}
         onMouseEnter={()=>onTopNodeSetter(true)}
         onMouseLeave={()=>onTopNodeSetter(false)}
-        >line</div>
+        ></div>
     )
 }
 
