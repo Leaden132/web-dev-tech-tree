@@ -80,11 +80,17 @@ const NodeConnector = ({nodePositionData, parentNodePositionData, initialPositio
         const yParent = parentNodePositionData.y
         const widthParent = parentNodePositionData.width
         const heightParent = parentNodePositionData.height
+
+        
+        if (x > xParent && y > yParent ) {
+            //lower and right
+        }
+
+        if (x < xParent && y > yParent) {
+            //lower and left
+        }
         
 
-        // // if (x > xParent && y > yParent && (x - xParent) > (y - yParent)) {
-        // //     //left
-        // // }
 
         let angleAdj = 1;
         let yAdj = 0;

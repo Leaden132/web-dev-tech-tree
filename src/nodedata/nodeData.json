@@ -71,7 +71,7 @@
     },
     {
       "id": 11,
-      "content": ["OS - Mac, Window", "Text Editor - VS Code, Webstorm, Vim", "browser: Chrome, Firefox", "Terminal - Git Bash, Zsh, CMDER", "Design - Adobe XD, Figma"],
+      "content": ["OS - Mac, Window", "Text Editor - VS Code, Monaco Editor, Webstorm, Vim", "browser: Chrome, Firefox", "Terminal - Git Bash, Zsh, CMDER", "Design - Adobe XD, Figma"],
       "parent": 10,
       "top":300,
       "left":650
